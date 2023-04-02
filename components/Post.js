@@ -26,6 +26,7 @@ function Post({ id, username, userImg, img, caption }) {
       </div>
 
       {/* img */}
+      <img src={img} className="w-full object-cover" alt="" />
 
       {/* Buttons */}
 
