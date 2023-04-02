@@ -8,6 +8,7 @@ import { useRecoilState } from "recoil";
 function Modal() {
   const [open, setOpen] = useRecoilState(modalState);
   const filePickerRef = useRef(null);
+  const captionRef = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const addImagePost = (e) => {
     const reader = new FileReader();
@@ -97,7 +98,7 @@ function Modal() {
                       <input
                         type="text"
                         className="border-none focus:ring-0 w-full text-center"
-                        //   ref={captionRef}
+                        ref={captionRef}
                         placeholder="Please enter a caption..."
                       />
                     </div>
