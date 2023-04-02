@@ -86,6 +86,23 @@ function Post({ id, username, userImg, img, caption }) {
         {caption}
       </p>
       {/* comments */}
+      {comments.length > 0 && (
+        <div className="ml-10 h-20 overflow-y-scroll scrollbar-thumb-black scrollbar-thin">
+          {comments.map((comment) => (
+            <div key={comment.id} className="flex items-center space-x-2 mb-3">
+              <img
+                src={comment.data().userImage}
+                className="h-7 rounded-full"
+                alt=""
+              />
+              <p className="text-sm flex-1">
+                <span className="font-bold">{comment.data().username}</span>{" "}
+                {comment.data().comment}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* input box */}
       {session && (
