@@ -42,6 +42,34 @@ function Modal() {
           >
             <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
               <div>
+                <div>
+                  <div className="mt-3 text-center sm:mt-5">
+                    <Dialog.Title
+                      as="h3"
+                      className="text-lg leading-6 font-medium text-gray-900"
+                    >
+                      Upload a photo
+                    </Dialog.Title>
+
+                    <div>
+                      <input
+                        // ref={filePickerRef}
+                        type="file"
+                        // onChange={addImagePost}
+                        hidden
+                      />
+                    </div>
+
+                    <div className="mt-2">
+                      <input
+                        type="text"
+                        className="border-none focus:ring-0 w-full text-center"
+                        //   ref={captionRef}
+                        placeholder="Please enter a caption..."
+                      />
+                    </div>
+                  </div>
+                </div>
                 <div className="mt-5 sm:mt-6">
                   <button
                     type="button"
