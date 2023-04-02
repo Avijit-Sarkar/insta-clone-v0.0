@@ -1,6 +1,7 @@
 import React from "react";
 import Stories from "./Stories";
 import Posts from "./Posts";
+import MiniProfile from "./MiniProfile";
 
 function Feed() {
   return (
@@ -16,6 +17,7 @@ function Feed() {
       {/* secrion */}
       <section>
         {/* Mini Profile */}
+        <MiniProfile />
         {/* Suggestions */}
       </section>
     </main>
