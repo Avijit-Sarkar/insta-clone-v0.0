@@ -1,12 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import { modalState } from "@/atoms/modalAtoms";
+import { db } from "@/firebase";
 import { Dialog, Transition } from "@headlessui/react";
 import { CameraIcon } from "@heroicons/react/outline";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { useSession } from "next-auth/react";
 import React, { Fragment, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 
 function Modal() {
   const [open, setOpen] = useRecoilState(modalState);
+  const { data: session } = useSession();
   const filePickerRef = useRef(null);
   const captionRef = useRef(null);
   const [loading, setLoading] = useState(false);
@@ -21,6 +25,15 @@ function Modal() {
     // 2> get the post ID for the newly created post
     // 3> upload the image to firebase storage with the post ID
     // 4> get a download URL from firebase storage and update the post with the new image
+
+    const docRef = await addDoc(collection(db, "posts"), {
+      username: session.user.username,
+      caption: captionRef.current.value,
+      profileImg: session.user.image,
+      timestamp: serverTimestamp(),
+    });
+
+    console.log("New doc added with ID", docRef.id);
   };
 
   const addImagePost = (e) => {
