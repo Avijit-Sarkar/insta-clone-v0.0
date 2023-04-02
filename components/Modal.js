@@ -1,9 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import { modalState } from "@/atoms/modalAtoms";
-import { db } from "@/firebase";
+import { db, storage } from "@/firebase";
 import { Dialog, Transition } from "@headlessui/react";
 import { CameraIcon } from "@heroicons/react/outline";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  serverTimestamp,
+  updateDoc,
+} from "firebase/firestore";
+import { getDownloadURL, uploadString } from "firebase/storage";
 import { useSession } from "next-auth/react";
 import React, { Fragment, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
@@ -34,6 +41,22 @@ function Modal() {
     });
 
     console.log("New doc added with ID", docRef.id);
+
+    const imageRef = ref(storage, `posts/${docRef.id}/image`);
+
+    await uploadString(imageRef, selectedFile, "data_url").then(
+      async (snapshot) => {
+        const downloadURL = await getDownloadURL(imageRef);
+
+        await updateDoc(doc(db, "posts", docRef.id), {
+          image: downloadURL,
+        });
+      }
+    );
+
+    setOpen(false);
+    setLoading(false);
+    setSelectedFile(null);
   };
 
   const addImagePost = (e) => {
