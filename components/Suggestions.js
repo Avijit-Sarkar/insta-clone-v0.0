@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import faker from "faker";
 import React, { useEffect, useState } from "react";
 
@@ -18,6 +19,18 @@ function Suggestions() {
         <h3 className="text-sm font-bold text-gray-400">Suggestion for you</h3>
         <button className="text-gray-600 font-semibold">See All</button>
       </div>
+      {suggestions.map((profile) => (
+        <div
+          key={profile.id}
+          className="flex items-center justify-between mt-3"
+        >
+          <img
+            src="https://links.papareact.com/3ke"
+            className="w-10 h-10 rounded-full border p-[2px]"
+            alt=""
+          />
+        </div>
+      ))}
     </div>
   );
 }
