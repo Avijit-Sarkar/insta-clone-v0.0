@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import faker from "faker";
 import Story from "./Story";
 
@@ -19,7 +19,7 @@ function Stories() {
       {suggestions.map((profile) => (
         <Story
           key={profile.id}
-          img={profile.avatar}
+          img="https://links.papareact.com/3ke"
           username={profile.username}
         />
       ))}
