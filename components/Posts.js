@@ -23,7 +23,16 @@ const posts = [
 function Posts() {
   return (
     <div>
-      <Post />
+      {posts.map((post) => (
+        <Post
+          key={post.id}
+          id={post.id}
+          username={post.username}
+          userImg={post.userImg}
+          img={post.img}
+          caption={post.caption}
+        />
+      ))}
     </div>
   );
 }
