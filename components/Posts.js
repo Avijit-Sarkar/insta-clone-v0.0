@@ -31,7 +31,7 @@ function Posts() {
         query(collection(db, "posts"), orderBy("timestamp", "desc")),
         (snapshot) => setPosts(snapshot.docs)
       ),
-    [db]
+    []
   );
 
   return (
