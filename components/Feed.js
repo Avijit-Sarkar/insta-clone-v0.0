@@ -16,9 +16,11 @@ function Feed() {
 
       {/* secrion */}
       <section className="hidden xl:inline-grid md:col-span-1">
-        {/* Mini Profile */}
-        <MiniProfile />
-        {/* Suggestions */}
+        <div className="fixed top-20">
+          {/* Mini Profile */}
+          <MiniProfile />
+          {/* Suggestions */}
+        </div>
       </section>
     </main>
   );
