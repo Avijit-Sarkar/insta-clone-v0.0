@@ -16,7 +16,7 @@ function Feed() {
       {/* Section */}
       <section className="col-span-2">
         {/* Stories */}
-        <Stories />
+        {/* <Stories /> */}
         {/* Posts */}
         <Posts />
       </section>
@@ -28,7 +28,7 @@ function Feed() {
             {/* Mini Profile */}
             <MiniProfile />
             {/* Suggestions */}
-            <Suggestions />
+            {/* <Suggestions /> */}
           </div>
         </section>
       )}
