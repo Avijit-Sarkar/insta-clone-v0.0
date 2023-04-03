@@ -28,19 +28,12 @@ function Modal() {
 
     setLoading(true);
 
-    // 1> Create a post and add to firestore 'posts' collection
-    // 2> get the post ID for the newly created post
-    // 3> upload the image to firebase storage with the post ID
-    // 4> get a download URL from firebase storage and update the post with the new image
-
     const docRef = await addDoc(collection(db, "posts"), {
       username: session.user.username,
       caption: captionRef.current.value,
       profileImg: session.user.image,
       timestamp: serverTimestamp(),
     });
-
-    console.log("New doc added with ID", docRef.id);
 
     const imageRef = ref(storage, `posts/${docRef.id}/image`);
 
@@ -90,7 +83,6 @@ function Modal() {
             <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
           </Transition.Child>
 
-          {/* This element is to trick the browser intocentering the modal contents. */}
           <span className="hidden sm:inline-block sm:align-middle sm:h-screen">
             &#8203
           </span>

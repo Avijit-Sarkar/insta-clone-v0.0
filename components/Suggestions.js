@@ -1,19 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
-import faker from "faker";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import suggestions from "./dumsuggestions";
 
 function Suggestions() {
-  // const [suggestions, setSuggestions] = useState([]);
-  // useEffect(() => {
-  //   const suggestions = [...Array(5)].map((_, i) => ({
-  //     ...faker.helpers.contextualCard(),
-  //     id: i,
-  //   }));
-
-  //   setSuggestions(suggestions);
-  // }, []);
-
   return (
     <div className="mt-4 ml-10">
       <div className="flex justify-between text-sm mb-5">

@@ -1,17 +1,4 @@
 const suggestions = [
-  // {
-  //   id: "123",
-  //   username: "DinoYt",
-  //   img: "https://picsum.photos/200",
-  //   companyname: "Youtube",
-  // },
-  // {
-  //   id: "153",
-  //   username: "React",
-  //   companyname: "React Js",
-  //   img: "https://links.papareact.com/3ke",
-  // },
-
   {
     id: "456",
     username: "Elon Musk",

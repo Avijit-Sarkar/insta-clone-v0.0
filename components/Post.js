@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import {
   BookmarkIcon,
@@ -86,7 +85,6 @@ function Post({ id, username, userImg, img, caption }) {
 
   return (
     <div className="bg-white my-7 border rounded-sm">
-      {/* Header */}
       <div className="flex items-center p-5">
         <img
           src={userImg}
@@ -96,11 +94,8 @@ function Post({ id, username, userImg, img, caption }) {
         <p className="flex-1 font-bold">{username}</p>
         <DotsHorizontalIcon className="h-5" />
       </div>
-
-      {/* img */}
       <img src={img} className="w-full object-cover" alt="" />
 
-      {/* Buttons */}
       {session && (
         <div className="flex justify-between px-4 pt-4">
           <div className="flex space-x-4">
@@ -119,7 +114,6 @@ function Post({ id, username, userImg, img, caption }) {
         </div>
       )}
 
-      {/* caption */}
       <p className="p-5 truncate">
         {likes.length > 0 && (
           <p className="font-bold mb-1">{likes.length} likes</p>
@@ -127,7 +121,6 @@ function Post({ id, username, userImg, img, caption }) {
         <span className="font-bold mr-1">{username} </span>
         {caption}
       </p>
-      {/* comments */}
       {comments.length > 0 && (
         <div className="ml-10 h-20 overflow-y-scroll scrollbar-thumb-black scrollbar-thin">
           {comments.map((comment) => (
@@ -149,7 +142,6 @@ function Post({ id, username, userImg, img, caption }) {
         </div>
       )}
 
-      {/* input box */}
       {session && (
         <form className="flex items-center p-4">
           <EmojiHappyIcon className="h-7" />

@@ -13,21 +13,15 @@ function Feed() {
         !session && "!grid-cols-1 !max-w-3xl"
       }`}
     >
-      {/* Section */}
       <section className="col-span-2">
-        {/* Stories */}
         <Stories />
-        {/* Posts */}
         <Posts />
       </section>
 
-      {/* secrion */}
       {session && (
         <section className="hidden xl:inline-grid md:col-span-1">
           <div className="fixed top-20">
-            {/* Mini Profile */}
             <MiniProfile />
-            {/* Suggestions */}
             <Suggestions />
           </div>
         </section>

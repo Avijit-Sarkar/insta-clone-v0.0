@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import Image from "next/image";
 import React from "react";
 import {
@@ -22,7 +21,6 @@ function Header() {
   return (
     <div className="shadow-md border-b bg-white sticky top-0 z-50">
       <div className="flex justify-between max-w-6xl mx-5 lg:mx-auto">
-        {/* Left */}
         <div
           onClick={() => router.push("/")}
           className="relative hidden lg:inline-grid  w-24 cursor-pointer"
@@ -45,7 +43,6 @@ function Header() {
             layout="fill"
           />
         </div>
-        {/* Middle - input search filed */}
         <div className={`max-w-xs ${!session && "opacity-0"}`}>
           <div className="relative mt-1 p-3 rounded-md">
             <div className="absolute inset-y-0 pl-3 flex items-center pointer-events-none">
@@ -58,7 +55,6 @@ function Header() {
             />
           </div>
         </div>
-        {/* Right */}
         <div className="flex items-center justify-end space-x-4">
           <HomeIcon onClick={() => router.push("/")} className="navBtn" />
           <MenuIcon className="h-6 md:hidden cursor-pointer" />
