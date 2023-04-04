@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRecoilState } from "recoil";
-import { modalState } from "@/atoms/modalAtoms";
+import { modalState } from "@/atoms/modalAtom";
 import { Dialog, Transition } from "@headlessui/react";
 import { CameraIcon } from "@heroicons/react/outline";
 import { Fragment, useRef, useState } from "react";
@@ -52,13 +52,13 @@ function Modal() {
     setSelectedFile(null);
   };
 
-  const addImagePost = (e) => {
+  const addImageToPost = (e) => {
     const reader = new FileReader();
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
     }
 
-    reader.onloadend = (readerEvent) => {
+    reader.onload = (readerEvent) => {
       setSelectedFile(readerEvent.target.result);
     };
   };
@@ -67,7 +67,7 @@ function Modal() {
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed z-10 inset-0 overflow-y-hidden"
+        className="fixed z-10 inset-0 overflow-y-auto"
         onClose={setOpen}
       >
         <div className="flex items-end justify-center min-h-[800px] sm:min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -83,7 +83,10 @@ function Modal() {
             <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
           </Transition.Child>
 
-          <span className="hidden sm:inline-block sm:align-middle sm:h-screen">
+          <span
+            className="hidden sm:inline-block sm:align-middle sm:h-screen"
+            aria-hidden="true"
+          >
             &#8203
           </span>
 
@@ -130,7 +133,7 @@ function Modal() {
                       <input
                         ref={filePickerRef}
                         type="file"
-                        onChange={addImagePost}
+                        onChange={addImageToPost}
                         hidden
                       />
                     </div>

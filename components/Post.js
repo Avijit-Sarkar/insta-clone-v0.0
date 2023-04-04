@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import {
   BookmarkIcon,
@@ -40,7 +41,7 @@ function Post({ id, username, userImg, img, caption }) {
         ),
         (snapshot) => setComments(snapshot.docs)
       ),
-    [id]
+    [db, id]
   );
 
   useEffect(
@@ -48,7 +49,7 @@ function Post({ id, username, userImg, img, caption }) {
       onSnapshot(collection(db, "posts", id, "likes"), (snapshot) =>
         setLikes(snapshot.docs)
       ),
-    [id]
+    [db, id]
   );
 
   useEffect(
@@ -56,7 +57,7 @@ function Post({ id, username, userImg, img, caption }) {
       setHasLiked(
         likes.findIndex((like) => like.id === session?.user?.uid) !== -1
       ),
-    [likes, session?.user?.uid]
+    [likes]
   );
 
   const likePost = async () => {
@@ -114,13 +115,14 @@ function Post({ id, username, userImg, img, caption }) {
         </div>
       )}
 
-      <p className="p-5 truncate">
+      <div className="p-5 truncate">
         {likes.length > 0 && (
           <p className="font-bold mb-1">{likes.length} likes</p>
         )}
         <span className="font-bold mr-1">{username} </span>
         {caption}
-      </p>
+      </div>
+
       {comments.length > 0 && (
         <div className="ml-10 h-20 overflow-y-scroll scrollbar-thumb-black scrollbar-thin">
           {comments.map((comment) => (
